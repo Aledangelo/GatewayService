@@ -1,0 +1,31 @@
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - TokenRelay
+      routes:
+        - id: ristorante-resource-server
+          uri: http://localhost:9003
+          predicates:
+            - Path=/prodotto/**
+        - id: ordine-resource-server
+          uri: http://localhost:9001
+          predicates:
+            - Method=GET,POST
+            - Path=/ordini/**
+# Enable these to debug the Authorization flow
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          web: DEBUG
+server:
+  port: 9002
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
