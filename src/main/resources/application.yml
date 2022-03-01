@@ -5,11 +5,11 @@ spring:
         - TokenRelay
       routes:
         - id: ristorante-resource-server
-          uri: http://localhost:9003
+          uri: http://10.16.14.31:9003
           predicates:
             - Path=/prodotto/**
         - id: ordine-resource-server
-          uri: http://localhost:9001
+          uri: http://10.16.11.227:9001
           predicates:
             - Method=GET,POST
             - Path=/ordini/**
